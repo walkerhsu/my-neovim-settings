@@ -13,6 +13,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
@@ -29,7 +30,6 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
@@ -50,25 +50,4 @@ require("lazy").setup({
     },
   },
 })
-
--- Set true color support
-vim.opt.termguicolors = true
-
--- Set custom diff colors
-local function set_diff_highlights()
-  vim.cmd([[
-    highlight DiffAdd    guibg=#157032 guifg=NONE
-    highlight DiffChange guibg=#1f2231 guifg=NONE
-    highlight DiffDelete guibg=#a1153a guifg=NONE
-    highlight DiffText   guibg=#394b70 guifg=NONE
-  ]])
-end
-
--- Apply on startup
-set_diff_highlights()
-
--- Reapply after every colorscheme load
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = set_diff_highlights,
-})
+vim.cmd.colorscheme("catppuccin")
