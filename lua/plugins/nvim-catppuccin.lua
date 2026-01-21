@@ -24,10 +24,10 @@ return {
       types = { "italic" },
     },
     color_overrides = {
-      mocha = {
-        base = "#000000",
-        mantle = "#000000",
-        crust = "#000000",
+      macchiato = {
+        base = "#0f0f0f",
+        mantle = "#1f1f1f",
+        crust = "#2f2f2f",
       },
     },
     integrations = {
